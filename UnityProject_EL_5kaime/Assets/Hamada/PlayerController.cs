@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
     {
     NORMAL,
     SIXSEVEN,
-    GAMEOVER
+    GAMEOVER,
+    STAN
     }
 
     [SerializeField] float m_moveSoeed;
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour
     float m_horizontalInput;
     float m_verticalInput;
 
-    float m_scoreUpTime;
+    float m_stanTime;
 
     string m_currentAnimation = "";
 
@@ -96,6 +97,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Stan() 
+    {
+        m_state = PlayerState.STAN;
+        ChangeAnimation("GameOver");
+        m_stanTime = 0;
+    }
+
     public void GameOver() 
     {
         m_state = PlayerState.GAMEOVER;
@@ -147,6 +155,19 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case PlayerState.GAMEOVER:
+
+                break;
+
+            case PlayerState.STAN:
+
+                m_stanTime += Time.deltaTime;
+
+                if (m_stanTime > 3) 
+                {
+                    m_state = PlayerState.NORMAL;
+                    ChangeAnimation("Idle");
+                    m_stanTime = 0;
+                }
 
                 break;
         }
