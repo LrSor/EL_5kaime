@@ -10,11 +10,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1483028947170018195, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.705
+      value: 5.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: chaseSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: fieldOfViewSortingOrder
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: visionOffset.y
+      value: 4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: wanderSettings.obstacleLayers.m_Bits
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 2185973221471131016, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: m_Name
@@ -22,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2231243389510804189, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.705
+      value: 5.11
       objectReference: {fileID: 0}
     - target: {fileID: 2894174022572559443, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -68,12 +80,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Visual
       objectReference: {fileID: 0}
+    - target: {fileID: 6566337265023890942, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6858147899470195971, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 686732670, guid: 3aca69f313601c04d85c5c3736ea755d, type: 3}
     - target: {fileID: 6858147899470195971, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6858147899470195971, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: m_SpriteSortPoint
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -140,7 +160,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -2.055}
+  m_Offset: {x: 0, y: 0.35}
   m_Radius: 0.35
 --- !u!114 &4712058319284746461
 MonoBehaviour:
