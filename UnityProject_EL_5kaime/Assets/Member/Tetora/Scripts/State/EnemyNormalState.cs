@@ -4,7 +4,7 @@ public class EnemyNormalState : EnemyState
 {
     private float undetectedTime;
     private readonly EnemyWander wander;
-
+    private float scoreAdd = 0f;
     public EnemyNormalState(Enemy enemy) : base(enemy)
     {
         wander = new EnemyWander(enemy);
@@ -13,6 +13,7 @@ public class EnemyNormalState : EnemyState
     public override void Enter()
     {
         wander.Begin();
+        scoreAdd = 0f;
     }
 
     public override void Update()
@@ -25,7 +26,23 @@ public class EnemyNormalState : EnemyState
                 && Vector3.Distance(Enemy.transform.position, Player.transform.position) <= Enemy.detectionRange);
             Enemy.detectionGauge = Enemy.normalGaugeSettings.UpdateGauge(
                 Enemy.detectionGauge, detected, Time.deltaTime, ref undetectedTime);
-            if (inSight)
+
+            if (Player.GetPlayerState() == PlayerController.PlayerState.SIXSEVEN
+                && Vector3.Distance(Enemy.transform.position, Player.transform.position) <= Enemy.detectionRange)
+            {
+                scoreAdd += Time.deltaTime;
+                if (1.0f <= scoreAdd)
+                {
+                    ScoreSystem.Instance.ScoreAdd(1);
+                    scoreAdd -= 1.0f;
+                }
+            }
+            else
+            {
+                scoreAdd = 0f;
+            }
+
+                if (inSight)
             {
                 Enemy.detectionGauge = 1f;
             }

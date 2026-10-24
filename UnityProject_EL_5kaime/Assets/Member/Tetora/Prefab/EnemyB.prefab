@@ -13,8 +13,16 @@ PrefabInstance:
       value: 2.705
       objectReference: {fileID: 0}
     - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: chaseSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: fieldOfViewSortingOrder
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: wanderSettings.obstacleLayers.m_Bits
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 2185973221471131016, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: m_Name
@@ -74,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 1606904629, guid: 5a8a5191594b87b46aa1177b69857f74, type: 3}
     - target: {fileID: 6858147899470195971, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
