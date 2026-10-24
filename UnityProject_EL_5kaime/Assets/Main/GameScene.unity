@@ -5891,6 +5891,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4715195617848157013, guid: b7ab9462a95cc6a46b72a44fa968b81a, type: 3}
+      propertyPath: m_discoBeat
+      value: 
+      objectReference: {fileID: 1528450104}
     - target: {fileID: 5097356127413188887, guid: b7ab9462a95cc6a46b72a44fa968b81a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -6018,6 +6022,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a90c502f5af05be4ca078716a55e3998, type: 3}
+--- !u!114 &1528450104 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3469393106057790840, guid: 1644984abf11935428f421fc36d13da5, type: 3}
+  m_PrefabInstance: {fileID: 1813382205}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b8ea11e9c3b4d4d93232c410609e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Disco.DiscoBeat
 --- !u!1 &1772373557
 GameObject:
   m_ObjectHideFlags: 0
@@ -6097,6 +6112,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1813382205
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 626665336306832528, guid: 1644984abf11935428f421fc36d13da5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 626665336306832528, guid: 1644984abf11935428f421fc36d13da5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 626665336306832528, guid: 1644984abf11935428f421fc36d13da5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 626665336306832528, guid: 1644984abf11935428f421fc36d13da5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 626665336306832528, guid: 1644984abf11935428f421fc36d13da5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 626665336306832528, guid: 1644984abf11935428f421fc36d13da5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 626665336306832528, guid: 1644984abf11935428f421fc36d13da5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 626665336306832528, guid: 1644984abf11935428f421fc36d13da5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 626665336306832528, guid: 1644984abf11935428f421fc36d13da5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 626665336306832528, guid: 1644984abf11935428f421fc36d13da5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469393106057790840, guid: 1644984abf11935428f421fc36d13da5, type: 3}
+      propertyPath: playOnStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888280230284222390, guid: 1644984abf11935428f421fc36d13da5, type: 3}
+      propertyPath: m_Name
+      value: DiscoStage
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1644984abf11935428f421fc36d13da5, type: 3}
 --- !u!1001 &2098405173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6176,3 +6252,4 @@ SceneRoots:
   - {fileID: 1438647093}
   - {fileID: 1083744738}
   - {fileID: 1373276724}
+  - {fileID: 1813382205}

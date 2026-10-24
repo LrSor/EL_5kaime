@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("画像の足元を示すTransform。Visualの位置をずらしても追跡先が一致する。未指定なら本体の原点")]
     private Transform feetAnchor;
 
+    [SerializeField]
+    private Disco.DiscoBeat m_discoBeat;
+
     private SpriteRenderer sightRenderer;
 
     public Vector3 FeetPosition => feetAnchor != null ? feetAnchor.position : transform.position;
@@ -121,6 +124,7 @@ public class PlayerController : MonoBehaviour
             SoundManager.Instance.PlaySE("se.six_seven");
             m_state = PlayerState.SIXSEVEN;
             ChangeAnimation("SixSeven");
+            m_discoBeat?.SetEffect(true);
         }
     }
 
@@ -130,6 +134,7 @@ public class PlayerController : MonoBehaviour
         {
             m_state = PlayerState.NORMAL;
             ChangeAnimation("Idle");
+            m_discoBeat?.SetEffect(false);
         }
     }
 
