@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1004478567959423640}
   - component: {fileID: 7632287171395675825}
+  - component: {fileID: 7632287171395675900}
   m_Layer: 0
   m_Name: PF_SceneLoader
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MonoBehaviour:
       m_Calls: []
   _progressTriggers:
   - _percent: 67
-    _holdSeconds: 1
+    _holdSeconds: 2
     _onReached:
       m_PersistentCalls:
         m_Calls:
@@ -76,6 +77,18 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 7632287171395675900}
+          m_TargetAssemblyTypeName: SceneFlow.SoundEventPlayer, Assembly-CSharp
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
           m_CallState: 2
     _onHoldFinished:
       m_PersistentCalls:
@@ -838,3 +851,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5023962906616479829, guid: 86914e1bf4b2f114f8a2c4bb1fb4fad5, type: 3}
   m_PrefabInstance: {fileID: 4804398448952794156}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7632287171395675900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17259350902999274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f015a2fa2204e3392d92618cb2ab210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneFlow.SoundEventPlayer
+  _soundId: se.six_seven
+  _fallbackPrefab: {fileID: 7913754411795337062, guid: 85588ddd112823d4da89eb66e578b646, type: 3}

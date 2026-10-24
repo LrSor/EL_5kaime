@@ -28,3 +28,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: db0dba12cc2d63f48a2a00060f1147d8, type: 3}
     volume: 1
     loop: 0
+  - id: se.six_seven
+    category: 1
+    clip: {fileID: 8300000, guid: 15ecbab63d974931b7cac67b19783ba0, type: 3}
+    volume: 1
+    loop: 0
