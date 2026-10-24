@@ -1,3 +1,4 @@
+using SceneFlow;
 using UnityEngine;
 
 public class ScoreSystem : MonoBehaviour
@@ -28,12 +29,21 @@ public class ScoreSystem : MonoBehaviour
     {
         score += num;
 
+        GameScore.Value = score;
+
         ScoreUI.Instance.UpdateUI();
     }
 
     public void ScoreMinus(int num)
     {
         score -= num;
+
+        if (score <= 0) 
+        {
+            score = 0;
+        }
+
+        GameScore.Value = score;
 
         ScoreUI.Instance.UpdateUI();
     }

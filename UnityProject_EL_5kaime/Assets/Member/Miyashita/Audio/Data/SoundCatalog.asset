@@ -33,3 +33,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 15ecbab63d974931b7cac67b19783ba0, type: 3}
     volume: 0.5
     loop: 0
+  - id: se.six
+    category: 1
+    clip: {fileID: 8300000, guid: ec9240bf45325c64b9ffc0121d3d01f0, type: 3}
+    volume: 0.5
+    loop: 0
+  - id: se.seven
+    category: 1
+    clip: {fileID: 8300000, guid: 6117da37f67f9e2468a849eb2c758aef, type: 3}
+    volume: 0.5
+    loop: 0

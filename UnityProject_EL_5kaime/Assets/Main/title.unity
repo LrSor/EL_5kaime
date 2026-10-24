@@ -832,6 +832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::moveArm
   moveImage: {fileID: 766658554}
   moveSpeed: 3
+  seID: se.six
   movePos: {x: 0, y: 180}
 --- !u!114 &932344147
 MonoBehaviour:
@@ -849,6 +850,63 @@ MonoBehaviour:
     _sceneAsset: {fileID: 102900000, guid: 52a740c2077fd304b9f98849535d9b3d, type: 3}
     _scenePath: Assets/Main/GameScene.unity
     _sceneName: GameScene
+--- !u!1001 &1059473605
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7913754411795337062, guid: 85588ddd112823d4da89eb66e578b646, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690467630981078898, guid: 85588ddd112823d4da89eb66e578b646, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.50513
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690467630981078898, guid: 85588ddd112823d4da89eb66e578b646, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.13662
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690467630981078898, guid: 85588ddd112823d4da89eb66e578b646, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690467630981078898, guid: 85588ddd112823d4da89eb66e578b646, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690467630981078898, guid: 85588ddd112823d4da89eb66e578b646, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690467630981078898, guid: 85588ddd112823d4da89eb66e578b646, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690467630981078898, guid: 85588ddd112823d4da89eb66e578b646, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690467630981078898, guid: 85588ddd112823d4da89eb66e578b646, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690467630981078898, guid: 85588ddd112823d4da89eb66e578b646, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690467630981078898, guid: 85588ddd112823d4da89eb66e578b646, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 85588ddd112823d4da89eb66e578b646, type: 3}
 --- !u!1 &1134034355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,6 +1252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::moveArm
   moveImage: {fileID: 2080437367}
   moveSpeed: 3
+  seID: se.seven
   movePos: {x: 0, y: 180}
 --- !u!114 &2047045308
 MonoBehaviour:
@@ -1447,3 +1506,4 @@ SceneRoots:
   - {fileID: 352492319}
   - {fileID: 1134034358}
   - {fileID: 173032953}
+  - {fileID: 1059473605}
