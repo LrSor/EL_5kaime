@@ -31,10 +31,10 @@ public class EnemyNormalState : EnemyState
                 && Vector3.Distance(Enemy.transform.position, Player.transform.position) <= Enemy.detectionRange)
             {
                 scoreAdd += Time.deltaTime;
-                if (1.0f <= scoreAdd)
+                if (0.1f <= scoreAdd)
                 {
-                    ScoreSystem.Instance.ScoreAdd(1);
-                    scoreAdd -= 1.0f;
+                    ScoreSystem.Instance.ScoreAdd(Mathf.FloorToInt(scoreAdd * 10.0f));
+                    scoreAdd -= 0.1f;
                 }
             }
             else
