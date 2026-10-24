@@ -32,6 +32,11 @@ public class TimerSystem : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.Instance.IsPlaying())
+        {
+            return;
+        }
+
         if (timeOverflg)
         {
             return;
