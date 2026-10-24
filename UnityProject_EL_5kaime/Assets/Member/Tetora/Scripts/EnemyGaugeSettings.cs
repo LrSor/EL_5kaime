@@ -3,7 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public sealed class EnemyGaugeSettings
 {
-    [Min(0f), Tooltip("ゲージが0からMAXになるまでの秒数。0で即MAX。視界での発見はこの値に関係なく即MAX")]
+    [Min(0f), Tooltip("ゲージが0からMAXになるまでの秒数。0で即MAX。67中の視界での発見はこの値に関係なく即MAX")]
     public float fillTime = 1f;
 
     [Min(0f), Tooltip("ゲージがMAXから0になるまでの秒数。0で即0。減少開始までの猶予は別設定")]

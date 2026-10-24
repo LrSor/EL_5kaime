@@ -10,29 +10,31 @@ public class EnemyChaseState : EnemyState
 
     public override void Update()
     {
-        // Enemyを使って追跡処理
-        if (Player != null)
+        PlayerController player = Player;
+        if (player != null)
         {
-            Enemy.FaceTowards(Player.transform.position);
-            bool withinChaseRange = Vector3.Distance(Enemy.transform.position, Player.transform.position) <= Enemy.chaseRange;
-            bool inSight = Enemy.IsPlayerInSight(Player);
-            bool detected = withinChaseRange || inSight;
-            Enemy.detectionGauge = Enemy.chaseGaugeSettings.UpdateGauge(
-                Enemy.detectionGauge, detected, Time.deltaTime, ref undetectedTime);
-            if (inSight)
-            {
-                Enemy.detectionGauge = 1f;
-            }
+            Enemy.FaceTowards(player.transform.position);
+        }
 
-            if (withinChaseRange)
-            {
-                Vector3 direction = (Player.transform.position - Enemy.transform.position).normalized;
-                Enemy.transform.position += direction * Time.deltaTime * Enemy.chaseSpeed;
-            }
-            else if (!detected && Enemy.detectionGauge <= 0f)
-            {
-                Enemy.ChangeState(new EnemyNormalState(Enemy));
-            }
+        // 追跡中はプレイヤーの状態や追跡距離ではなく、視界に入っているかで増減する。
+        bool inSight = player != null && Enemy.IsInFieldOfView(player.transform.position);
+        Enemy.detectionGauge = Enemy.chaseGaugeSettings.UpdateGauge(
+            Enemy.detectionGauge, inSight, Time.deltaTime, ref undetectedTime);
+        if (inSight && player.GetPlayerState() == PlayerController.PlayerState.SIXSEVEN)
+        {
+            Enemy.detectionGauge = 1f;
+        }
+
+        if (!inSight && Enemy.detectionGauge <= 0f)
+        {
+            Enemy.ChangeState(new EnemyNormalState(Enemy));
+            return;
+        }
+
+        if (player != null && Vector3.Distance(Enemy.transform.position, player.transform.position) <= Enemy.chaseRange)
+        {
+            Vector3 direction = (player.transform.position - Enemy.transform.position).normalized;
+            Enemy.transform.position += direction * Time.deltaTime * Enemy.chaseSpeed;
         }
     }
 }

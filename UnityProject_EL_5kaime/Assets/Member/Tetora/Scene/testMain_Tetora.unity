@@ -588,6 +588,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: chaseSpeed
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: normalGaugeSettings.fillTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: normalGaugeSettings.decreaseDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2185973221471131016, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -630,10 +642,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2894174022572559443, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4936301127405183592, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

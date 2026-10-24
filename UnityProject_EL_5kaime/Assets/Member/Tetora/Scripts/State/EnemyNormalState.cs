@@ -3,9 +3,16 @@ using UnityEngine;
 public class EnemyNormalState : EnemyState
 {
     private float undetectedTime;
+    private readonly EnemyWander wander;
 
     public EnemyNormalState(Enemy enemy) : base(enemy)
     {
+        wander = new EnemyWander(enemy);
+    }
+
+    public override void Enter()
+    {
+        wander.Begin();
     }
 
     public override void Update()
@@ -26,7 +33,10 @@ public class EnemyNormalState : EnemyState
             if (Enemy.detectionGauge >= 1f)
             {
                 Enemy.ChangeState(new EnemyChaseState(Enemy));
+                return;
             }
         }
+
+        wander.Update(Time.deltaTime);
     }
 }

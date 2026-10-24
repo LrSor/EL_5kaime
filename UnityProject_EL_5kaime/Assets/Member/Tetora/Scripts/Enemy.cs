@@ -11,11 +11,16 @@ public class Enemy : MonoBehaviour
     public float detectionRange = 5f;
     public float chaseRange = 10f;
 
+    [Header("通常時のランダムウォーク")]
+    public EnemyWanderSettings wanderSettings = new EnemyWanderSettings();
+
+    public Vector2 WanderOrigin { get; private set; }
+
     [Header("警戒ゲージ（秒）")]
     [Tooltip("通常時の近距離検知。視界での発見は常に即MAX")]
     public EnemyGaugeSettings normalGaugeSettings = new EnemyGaugeSettings();
 
-    [Tooltip("追跡範囲内でのゲージ回復と、範囲外での減少。視界での発見は常に即MAX")]
+    [Tooltip("追跡中は視界内で回復、視界外で猶予後に減少。67中の視界での発見は即MAX。Chase Rangeは移動範囲にのみ使用")]
     public EnemyGaugeSettings chaseGaugeSettings = new EnemyGaugeSettings();
 
     [Header("追跡の移動・向き")]
@@ -31,7 +36,7 @@ public class Enemy : MonoBehaviour
     public float fieldOfViewAngle = 90f;
 
     [Range(0f, 360f)]
-    [Tooltip("敵のローカル方向。0 = 右、90 = 上、180 = 左、270 = 下。追跡中はプレイヤーへ向く")]
+    [Tooltip("敵のローカル方向。0 = 右、90 = 上、180 = 左、270 = 下。通常時は歩行方向、追跡時はプレイヤーへ向く")]
     public float fieldOfViewDirection = 0f;
 
     [Min(0f)]
@@ -79,6 +84,7 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
     {
+        WanderOrigin = transform.position;
         detectionGauge = 0f;
         ChangeState(new EnemyNormalState(this));
         CreateVisionMesh();
@@ -191,12 +197,17 @@ public class Enemy : MonoBehaviour
 
     public void FaceTowards(Vector3 targetPosition)
     {
+        FaceTowards(targetPosition, chaseTurnSpeed, Time.deltaTime);
+    }
+
+    public void FaceTowards(Vector3 targetPosition, float turnSpeed, float deltaTime)
+    {
         Vector2 direction = transform.InverseTransformDirection(targetPosition - transform.position);
         if (direction.sqrMagnitude > Mathf.Epsilon)
         {
             float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            fieldOfViewDirection = Mathf.Repeat(chaseTurnSpeed <= 0f ? targetAngle
-                : Mathf.MoveTowardsAngle(fieldOfViewDirection, targetAngle, chaseTurnSpeed * Time.deltaTime), 360f);
+            fieldOfViewDirection = Mathf.Repeat(turnSpeed <= 0f ? targetAngle
+                : Mathf.MoveTowardsAngle(fieldOfViewDirection, targetAngle, turnSpeed * Mathf.Max(0f, deltaTime)), 360f);
         }
     }
 
@@ -265,6 +276,14 @@ public class Enemy : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
+        if (wanderSettings != null && wanderSettings.enabled)
+        {
+            UnityEditor.Handles.color = Color.cyan;
+            Vector3 origin = Application.isPlaying
+                ? new Vector3(WanderOrigin.x, WanderOrigin.y, transform.position.z) : transform.position;
+            UnityEditor.Handles.DrawWireDisc(origin, Vector3.forward, Mathf.Max(0f, wanderSettings.radius));
+        }
+
         if (Application.isPlaying)
         {
             return;
