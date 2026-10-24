@@ -273,7 +273,7 @@ PF_SceneLoader
 |---|---|
 | Scene_Title | 「ゲームへ」で Game へ |
 | Scene_Game | 5秒後に自動でリザルトへ(仮スコア 1234 を書き込む)。ボタンでも遷移可 |
-| Scene_Result | スコア表示。「もう一度」で Game へ、「タイトルへ」で Title へ |
+| Scene_Result | スコア表示。「もう一度」で Game へ、「タイトルへ」で Title へ。右下の「67」ボタンで、画像が1秒だけ背景に出る |
 
 `Scene_Title` から Play すると一通り確認できます。
 
@@ -294,6 +294,7 @@ PF_SceneLoader
 | SceneTransitionButton.cs / SceneTransitionTrigger.cs | ボタン・イベントから遷移するための部品 |
 | GameScore.cs / ResultScoreView.cs | スコアの受け渡しと表示 |
 | Editor/SceneReferenceDrawer.cs | `SceneReference` の Inspector 表示 |
+| TimedImageToggle.cs | `Show()` で指定のオブジェクトを一定時間だけ表示する(リザルトの「67」ボタンで使用) |
 | Demo/CountdownEvent.cs | 確認用(実際のゲームでは使わない) |
 
 ---
