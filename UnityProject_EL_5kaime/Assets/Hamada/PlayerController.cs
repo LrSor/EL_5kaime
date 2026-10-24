@@ -15,16 +15,14 @@ public class PlayerController : MonoBehaviour
     float m_horizontalInput;
     float m_verticalInput;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        m_state = PlayerState.NORMAL;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        PlayerMovement();
+        StateHandler();
     }
 
     private void PlayerMovement() 
@@ -35,6 +33,43 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDirection = new Vector3(m_horizontalInput, m_verticalInput);
 
         transform.position += moveDirection * m_moveSoeed * Time.deltaTime;
+    }
+
+    private void DoSixSeven() 
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            m_state = PlayerState.SIXSEVEN;
+        }
+    }
+
+    private void ExitSixSeven() 
+    {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            m_state = PlayerState.NORMAL;
+        }
+    }
+
+    private void StateHandler() 
+    {
+        switch (m_state) 
+        {
+            case PlayerState.NORMAL:
+
+                PlayerMovement();
+
+                DoSixSeven();
+
+                break;
+
+            case PlayerState.SIXSEVEN:
+
+                ExitSixSeven();
+
+                break;
+
+        }
     }
 
     public PlayerState GetPlayerState() 
