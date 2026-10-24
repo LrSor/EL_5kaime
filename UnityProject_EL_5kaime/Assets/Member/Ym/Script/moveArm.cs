@@ -4,10 +4,10 @@ using UnityEngine.EventSystems;
 
 public class moveArm : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public RectTransform moveImage;
-    public float moveSpeed = 1.0f;
+    [SerializeField] RectTransform moveImage;
+    [SerializeField] float moveSpeed = 1.0f;
 
-    public Vector2 movePos;
+    [SerializeField] Vector2 movePos;
     Vector2 startPos;
     Vector2 targetPos;
 
