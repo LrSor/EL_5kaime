@@ -34,6 +34,14 @@ public class EnemyChaseState : EnemyState
         if (player != null && Vector3.Distance(Enemy.transform.position, player.FeetPosition) <= Enemy.chaseRange)
         {
             Enemy.Movement.MoveTowards(player.FeetPosition, Enemy.chaseSpeed, Time.deltaTime);
+
+            if(Vector3.Distance(Enemy.transform.position, player.FeetPosition) <= Enemy.killRange)
+            {
+                Player.Stan();
+                Enemy.ChangeState(new EnemyNormalState(Enemy));
+                ScoreSystem.Instance.ScoreMinus(10);
+                TimerSystem.Instance.TimeMinus(-5f);
+            }
         }
     }
 }
