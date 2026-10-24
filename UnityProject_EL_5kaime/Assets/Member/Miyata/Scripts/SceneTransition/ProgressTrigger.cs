@@ -16,6 +16,7 @@ namespace SceneFlow
         [SerializeField, Range(0f, PercentMax), Tooltip("発火する%(0〜100)。バーの表示値がこの値に達した時に1回だけ発火する")] private float _percent = 50f;
         [SerializeField, Min(0f), Tooltip("到達した位置でバーを止める秒数。0なら止めない。ロードは裏で進み続ける")] private float _holdSeconds; // 到達した位置でバーを止める秒数(0なら止めない)
         [SerializeField, Tooltip("到達時に呼ぶ処理。SEなどを接続する")] private UnityEvent _onReached;
+        [SerializeField, Tooltip("止まりが終わった時に呼ぶ処理。止めている間だけ画像を出す場合に、非表示にする処理を接続する")] private UnityEvent _onHoldFinished;
 
         // 1回のロードにつき1回だけ発火するための記録(シリアライズしない)
         [NonSerialized] private bool _isFired;
@@ -26,16 +27,22 @@ namespace SceneFlow
             _isFired = false;
         }
 
-        /// <summary>
-        /// 表示中のバー値(0〜1)がしきい値以上になった時、未発火なら1回だけ発火する。
-        /// 発火した場合は止める秒数を返す(発火しなかった場合は 0)。
-        /// </summary>
-        public float Check(float shown)
+        /// <summary>到達した位置でバーを止める秒数(0なら止めない)。</summary>
+        public float HoldSeconds => _holdSeconds;
+
+        /// <summary>表示中のバー値(0〜1)がしきい値以上になった時、未発火なら1回だけ発火して true を返す。</summary>
+        public bool Check(float shown)
         {
-            if (_isFired || shown * PercentMax < _percent) return 0f;
+            if (_isFired || shown * PercentMax < _percent) return false;
             _isFired = true;
             _onReached.Invoke();
-            return _holdSeconds;
+            return true;
+        }
+
+        /// <summary>止まりが終わった時に呼ぶ。</summary>
+        public void NotifyHoldFinished()
+        {
+            _onHoldFinished.Invoke();
         }
     }
 }
