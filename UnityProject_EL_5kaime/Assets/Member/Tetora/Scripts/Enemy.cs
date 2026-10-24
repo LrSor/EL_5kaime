@@ -5,16 +5,25 @@ public class Enemy : MonoBehaviour
     public int health = 100;
     public EnemyState currentState;
 
+    public float detectionGauge = 0f;
+
+    public float detectionRange = 5f;
+
+    [SerializeField]
+    private GameObject detectionMeter = null;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
     {
-        ChangeState(new EnemyChaseState(this));
+        detectionGauge = 0f;
+        ChangeState(new EnemyNormalState(this));
     }
 
     // Update is called once per frame
     public void Update()
     {
         currentState?.Update();
+        detectionMeter.transform.localScale = new Vector3(detectionGauge, 0.1f, 1f);
     }
         
     public void FixedUpdate()
