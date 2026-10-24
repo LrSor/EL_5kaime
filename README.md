@@ -32,7 +32,7 @@ HAL東京 チーム制作プロジェクト。
 
 ```text
 
-Misoten-27/
+EL_5kaime/
 |
 ├─ UnityProject_EL_5kaime/    # Unityプロジェクト
 |

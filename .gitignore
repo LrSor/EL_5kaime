@@ -1,28 +1,28 @@
 # ==================================================
 # Unity
 # ==================================================
-/UnityProject_Misoten-27/[Ll]ibrary/
-/UnityProject_Misoten-27/[Tt]emp/
-/UnityProject_Misoten-27/[Oo]bj/
-/UnityProject_Misoten-27/[Ll]ogs/
-/UnityProject_Misoten-27/[Uu]ser[Ss]ettings/
-/UnityProject_Misoten-27/[Mm]emoryCaptures/
-/UnityProject_Misoten-27/[Rr]ecordings/
+/UnityProject_EL_5kaime/[Ll]ibrary/
+/UnityProject_EL_5kaime/[Tt]emp/
+/UnityProject_EL_5kaime/[Oo]bj/
+/UnityProject_EL_5kaime/[Ll]ogs/
+/UnityProject_EL_5kaime/[Uu]ser[Ss]ettings/
+/UnityProject_EL_5kaime/[Mm]emoryCaptures/
+/UnityProject_EL_5kaime/[Rr]ecordings/
 
 # Unity builds
-/UnityProject_Misoten-27/[Bb]uild/
-/UnityProject_Misoten-27/[Bb]uilds/
+/UnityProject_EL_5kaime/[Bb]uild/
+/UnityProject_EL_5kaime/[Bb]uilds/
 
 # Visual Studio generated files
-/UnityProject_Misoten-27/.vs/
-/UnityProject_Misoten-27/*.csproj
-/UnityProject_Misoten-27/*.sln
-/UnityProject_Misoten-27/*.slnx
-/UnityProject_Misoten-27/*.suo
-/UnityProject_Misoten-27/*.user
+/UnityProject_EL_5kaime/.vs/
+/UnityProject_EL_5kaime/*.csproj
+/UnityProject_EL_5kaime/*.sln
+/UnityProject_EL_5kaime/*.slnx
+/UnityProject_EL_5kaime/*.suo
+/UnityProject_EL_5kaime/*.user
 
 # Rider
-/UnityProject_Misoten-27/.idea/
+/UnityProject_EL_5kaime/.idea/
 
 
 # ==================================================
