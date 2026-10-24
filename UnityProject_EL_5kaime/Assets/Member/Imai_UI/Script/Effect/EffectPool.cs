@@ -8,12 +8,12 @@ public class EffectPool : MonoBehaviour
     [SerializeField]
     private List<EffectData> effectDatas;
 
-    // EffectTypeごとの待機中エフェクト
-    private readonly Dictionary<EffectType, Queue<EffectObject>> pools = new();
+    private readonly Dictionary<EffectData, Queue<EffectObject>> pools
+        = new();
+    private readonly Dictionary<string, EffectData> effectDataDictionary
+    = new();
 
-    // EffectTypeごとの設定データ
-    private readonly Dictionary<EffectType, EffectData> dataDictionary = new();
-    
+
     private void Awake()
     {
         // シングルトン化
@@ -31,58 +31,57 @@ public class EffectPool : MonoBehaviour
     {
         foreach (EffectData data in effectDatas)
         {
-            dataDictionary.Add(
-                data.EffectType,
+            effectDataDictionary.Add(
+                data.EffectId,
                 data
             );
 
             pools.Add(
-                data.EffectType,
+                data,
                 new Queue<EffectObject>()
             );
 
-            // 初期生成
             for (int i = 0; i < data.InitialPoolSize; i++)
             {
-                CreateEffect(data.EffectType);
+                CreateEffect(data);
             }
         }
     }
 
 
-    private EffectObject CreateEffect(EffectType type)
+    private EffectObject CreateEffect(EffectData data)
     {
-        EffectData data = dataDictionary[type];
-
         GameObject obj = Instantiate(
             data.Prefab,
             transform
         );
 
-        EffectObject effect = obj.GetComponent<EffectObject>();
+        EffectObject effect =
+            obj.GetComponent<EffectObject>();
 
         effect.Initialize(
             this,
-            type
+            data
         );
 
         obj.SetActive(false);
 
-        pools[type].Enqueue(effect);
+        pools[data].Enqueue(effect);
 
         return effect;
     }
 
 
-    public EffectObject Get(EffectType type)
+    public EffectObject Get(EffectData data)
     {
-        // 全部使用中なら追加生成
-        if (pools[type].Count == 0)
+        // 使用可能なEffectObjectがなければ追加生成
+        if (pools[data].Count == 0)
         {
-            CreateEffect(type);
+            CreateEffect(data);
         }
 
-        EffectObject effect = pools[type].Dequeue();
+        EffectObject effect =
+            pools[data].Dequeue();
 
         effect.gameObject.SetActive(true);
 
@@ -96,18 +95,35 @@ public class EffectPool : MonoBehaviour
 
         effect.transform.SetParent(transform);
 
-        pools[effect.GetEffectType()].Enqueue(effect);
+        pools[effect.EffectData].Enqueue(effect);
     }
 
 
     public void Play(
-        EffectType type,
+        EffectData data,
         Vector3 position)
     {
-        EffectObject effect = Get(type);
+        EffectObject effect = Get(data);
 
         effect.transform.position = position;
 
         effect.Play();
+    }
+    public void Play(
+    string effectId,
+    Vector3 position)
+    {
+        if (!effectDataDictionary.TryGetValue(
+            effectId,
+            out EffectData data))
+        {
+            Debug.LogError(
+                $"EffectDataが見つかりません : {effectId}"
+            );
+
+            return;
+        }
+
+        Play(data, position);
     }
 }

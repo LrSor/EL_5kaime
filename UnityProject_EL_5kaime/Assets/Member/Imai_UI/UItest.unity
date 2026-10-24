@@ -467,6 +467,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: EffectPool
       objectReference: {fileID: 0}
+    - target: {fileID: 4872282655072751583, guid: 8490ab9d005944646ac24b27eb54c236, type: 3}
+      propertyPath: effectDatas.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4872282655072751583, guid: 8490ab9d005944646ac24b27eb54c236, type: 3}
+      propertyPath: 'effectDatas.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 363dd8d48c2ba634685a38949974b225, type: 2}
+    - target: {fileID: 4872282655072751583, guid: 8490ab9d005944646ac24b27eb54c236, type: 3}
+      propertyPath: 'effectDatas.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 3015fd00a3c75504d8c1bac32e39147a, type: 2}
+    - target: {fileID: 4872282655072751583, guid: 8490ab9d005944646ac24b27eb54c236, type: 3}
+      propertyPath: 'effectDatas.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b493711553dbee4cbfa8d5d4cc3012f, type: 2}
     - target: {fileID: 5610850749239485343, guid: 8490ab9d005944646ac24b27eb54c236, type: 3}
       propertyPath: m_LocalPosition.x
       value: 342.5
