@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     float m_horizontalInput;
     float m_verticalInput;
 
+    float m_scoreUpTime;
+
     string m_currentAnimation = "";
 
     void Start()
@@ -101,6 +103,14 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case PlayerState.SIXSEVEN:
+
+                m_scoreUpTime += Time.deltaTime;
+
+                if (m_scoreUpTime > 1) 
+                {
+                    ScoreSystem.Instance.ScoreAdd(100);
+                    m_scoreUpTime = 0;
+                }
 
                 ExitSixSeven();
 
