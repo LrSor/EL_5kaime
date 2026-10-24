@@ -13,16 +13,32 @@ PrefabInstance:
       value: 5.11
       objectReference: {fileID: 0}
     - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: killRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: chaseSpeed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: visionOffset.y
+      value: 4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: fieldOfViewAngle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: detectionEffectOffset.y
+      value: 5.35
       objectReference: {fileID: 0}
     - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: fieldOfViewSortingOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
-      propertyPath: visionOffset.y
-      value: 4.1
+      propertyPath: normalGaugeSettings.fillTime
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: wanderSettings.obstacleLayers.m_Bits

@@ -165,6 +165,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 51
   fieldOfViewSortingOrder: -1
+  suspiciousEffect: {fileID: 11400000, guid: 3ff7d7dbf79543ad9e77bf9d575e553b, type: 2}
+  discoveredEffect: {fileID: 11400000, guid: f7db185453904ff9aa4dadc6b7a65ec8, type: 2}
+  detectionEffectOffset: {x: 0, y: 2.4, z: 0}
   detectionMeter: {fileID: 3486561704917807265}
 --- !u!1 &3316215399764060960
 GameObject:

@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EffectPool
   effectDatas:
   - {fileID: 11400000, guid: 4188d55445c278f40b644b5be5db0e58, type: 2}
+  - {fileID: 11400000, guid: 3ff7d7dbf79543ad9e77bf9d575e553b, type: 2}
+  - {fileID: 11400000, guid: f7db185453904ff9aa4dadc6b7a65ec8, type: 2}

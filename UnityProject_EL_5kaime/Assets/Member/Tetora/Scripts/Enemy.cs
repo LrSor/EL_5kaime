@@ -99,6 +99,18 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject detectionMeter = null;
 
+    [Header("警戒・発見の吹き出し")]
+    [SerializeField, Tooltip("警戒ゲージが残っている間の？。EffectSpriteObject付きのPrefabを指定したEffectData")]
+    private EffectData suspiciousEffect;
+
+    [SerializeField, Tooltip("追跡ステート中の！。EffectSpriteObject付きのPrefabを指定したEffectData")]
+    private EffectData discoveredEffect;
+
+    [SerializeField, Tooltip("足元から吹き出し下端までの位置（ワールド単位）")]
+    private Vector3 detectionEffectOffset = new Vector3(0f, 2.4f, 0f);
+
+    private EffectSpriteObject detectionEffect;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
     {
@@ -166,6 +178,10 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
+        if (currentState is EnemyChaseState)
+        {
+            ShowDetectionEffect(true);
+        }
         if (visionObject != null)
         {
             visionObject.SetActive(true);
@@ -174,6 +190,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDisable()
     {
+        HideDetectionEffect();
         if (visionObject != null)
         {
             visionObject.SetActive(false);
@@ -349,7 +366,46 @@ public class Enemy : MonoBehaviour
     {
         Movement?.ResetPath();
         currentState?.Exit();
+        HideDetectionEffect();
         currentState = newState;
         currentState?.Enter();
+    }
+
+    public void ShowDetectionEffect(bool discovered)
+    {
+        EffectData data = discovered ? discoveredEffect : suspiciousEffect;
+        if (detectionEffect != null && detectionEffect.EffectData == data)
+        {
+            return;
+        }
+
+        HideDetectionEffect();
+        EffectPool effectPool = EffectPool.Instance;
+        if (data == null || effectPool == null)
+        {
+            return;
+        }
+
+        EffectObject effect = effectPool.Get(data);
+        detectionEffect = effect as EffectSpriteObject;
+        if (detectionEffect == null)
+        {
+            effectPool.Release(effect);
+            Debug.LogError("吹き出しのPrefabにEffectSpriteObjectが必要です。", this);
+            return;
+        }
+
+        detectionEffect.PlayFollowing(transform, detectionEffectOffset);
+    }
+
+    public void HideDetectionEffect()
+    {
+        if (detectionEffect == null)
+        {
+            return;
+        }
+
+        detectionEffect.Stop();
+        detectionEffect = null;
     }
 }

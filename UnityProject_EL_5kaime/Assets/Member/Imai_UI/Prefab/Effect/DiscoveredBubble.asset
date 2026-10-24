@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2baac3a02def867499f39194af291961, type: 3}
+  m_Name: DiscoveredBubble
+  m_EditorClassIdentifier: Assembly-CSharp::EffectData
+  effectId: EnemyDiscovered
+  prefab: {fileID: 8228511948490034871, guid: ee4b414a5fb7490ebd604f10299f1fe7, type: 3}
+  initialPoolSize: 5
