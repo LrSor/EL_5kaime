@@ -53,6 +53,8 @@ public sealed class EnemyMovement2D : MonoBehaviour
         repathTime = 0f;
     }
 
+    // destination は画像の底中央（Enemy本体の原点）の目標位置。
+    // NavMeshと接触判定には、その位置から足元Colliderの中心へずらして渡す。
     public Vector2 MoveTowards(Vector2 destination, float speed, float deltaTime)
     {
         if (!isActiveAndEnabled || speed <= 0f || deltaTime <= 0f) return Vector2.zero;
