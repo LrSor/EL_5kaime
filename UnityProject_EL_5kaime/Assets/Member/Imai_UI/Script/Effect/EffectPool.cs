@@ -6,7 +6,7 @@ public class EffectPool : MonoBehaviour
     public static EffectPool Instance { get; private set; }
 
     [SerializeField]
-    private List<EffectData> effectDatas;
+    private List<EffectData> effectDatas = new();
 
     private readonly Dictionary<EffectData, Queue<EffectObject>> pools
         = new();
@@ -31,23 +31,32 @@ public class EffectPool : MonoBehaviour
     {
         foreach (EffectData data in effectDatas)
         {
-            effectDataDictionary.Add(
-                data.EffectId,
-                data
-            );
-
-            pools.Add(
-                data,
-                new Queue<EffectObject>()
-            );
-
-            for (int i = 0; i < data.InitialPoolSize; i++)
-            {
-                CreateEffect(data);
-            }
+            Register(data);
         }
     }
 
+    private void Register(EffectData data)
+    {
+        if (data == null || pools.ContainsKey(data))
+        {
+            return;
+        }
+
+        effectDataDictionary.TryAdd(data.EffectId, data);
+        pools.Add(data, new Queue<EffectObject>());
+        for (int i = 0; i < data.InitialPoolSize; i++)
+        {
+            CreateEffect(data);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
 
     private EffectObject CreateEffect(EffectData data)
     {
@@ -74,6 +83,9 @@ public class EffectPool : MonoBehaviour
 
     public EffectObject Get(EffectData data)
     {
+        // Enemyなどから直接指定されたEffectDataも利用できるようにする。
+        Register(data);
+
         // 使用可能なEffectObjectがなければ追加生成
         if (pools[data].Count == 0)
         {

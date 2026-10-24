@@ -80,6 +80,15 @@ public class EnemyNormalState : EnemyState
             ResetScore();
         }
 
+        if (Enemy.detectionGauge > 0f)
+        {
+            Enemy.ShowDetectionEffect(false);
+        }
+        else
+        {
+            Enemy.HideDetectionEffect();
+        }
+
         wander.Update(Time.deltaTime);
     }
 
