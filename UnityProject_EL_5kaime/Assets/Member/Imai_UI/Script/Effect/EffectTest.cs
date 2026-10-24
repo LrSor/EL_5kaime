@@ -10,7 +10,7 @@ public class EffectTest : MonoBehaviour
         {
             Debug.Log("エフェクト発生");
             EffectPool.Instance.Play(
-                EffectId.Six,
+                EffectId.Angry,
                 transform.position + Vector3.up * 1.5f
             );
         }
