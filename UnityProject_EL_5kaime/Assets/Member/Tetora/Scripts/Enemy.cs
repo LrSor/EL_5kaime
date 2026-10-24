@@ -98,6 +98,7 @@ public class Enemy : MonoBehaviour
             {
                 var feet = gameObject.AddComponent<CircleCollider2D>();
                 feet.radius = Mathf.Max(0.01f, wanderSettings.collisionRadius);
+                feet.offset = Vector2.up * feet.radius;
             }
             Movement = gameObject.AddComponent<EnemyMovement2D>();
         }
