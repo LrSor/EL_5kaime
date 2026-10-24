@@ -3,6 +3,11 @@
 EnemyA / EnemyB は、足元の CircleCollider2D で壁や家具にぶつかります。
 徘徊・追跡の両方が障害物を避けて移動し、到達できない目的地へは進みません。
 
+Enemy本体の原点は画像の下中央（足元）です。EnemyA / EnemyB の全アニメーションも下中央のPivotで統一しています。
+プレイヤーも足元が原点なので、追跡は足元同士を合わせます。近距離検知・視界・徘徊範囲の中心も同じ原点です。
+足元のCircleCollider2DはOffset Y = 0.35 / Radius = 0.35で、円の下端を画像の足元に合わせています。
+半径を変更するときは、円の下端を足元に合わせたい場合にOffset Yも同じ値へ変更してください。
+
 - 再生時に `Enemy Navigation 2D` が同じシーンに自動生成されます。追加パッケージや事前の Bake は不要です。
 - `Floor` という名前の Tilemap を歩行範囲に使用します。別名の床を使う場合は、EnemyNavMesh2D をシーンに追加して Floor に指定してください。
 - 壁・家具には、Trigger ではない Collider2D を付けてください。TilemapCollider2D と CompositeCollider2D にも対応します。
