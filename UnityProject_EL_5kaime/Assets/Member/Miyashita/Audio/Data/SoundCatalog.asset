@@ -31,5 +31,5 @@ MonoBehaviour:
   - id: se.six_seven
     category: 1
     clip: {fileID: 8300000, guid: 15ecbab63d974931b7cac67b19783ba0, type: 3}
-    volume: 1
+    volume: 0.5
     loop: 0
