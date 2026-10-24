@@ -246,8 +246,9 @@ PF_SceneLoader
 | On Reached | 到達時に呼ぶ処理 |
 | On Hold Finished | 止まりが終わった時に呼ぶ処理(止めている間だけ画像を出す場合に、非表示にする処理を接続する) |
 
-- 現在の設定: 67% で1秒止まり、その間だけ `HoldImage`(背景画像 `Textures/Loading_67.jpg`)が出ます。到達時に `HoldImage` を表示し、止まりが終わると非表示にしています。
-- 画像を差し替える場合は、プレハブの `HoldImage` の Image の Source Image を変えます。画面を覆うように拡大され、縦横比は崩れません(はみ出す部分は切れます)。
+- 現在の設定: 67% で1秒止まり、その間だけ `HoldImage`(`Prefabs/PF_Man67.prefab`)が出ます。到達時に `HoldImage` を表示し、止まりが終わると非表示にしています。
+- `PF_Man67` は、背景(`Textures/Man67_Background.jpg`)と、左右の手(`Man67_HandLeft.png`、`Man67_HandRight.png`)でできています。表示されている間、手が交互に上下します(`HandSwing`。1秒で2往復、振れ幅 150)。
+- 背景は、画面を覆うように拡大され、縦横比は崩れません(はみ出す部分は切れます)。画像を差し替える場合は、各 Image の Source Image を変えます。
 - 各要素は、1回のロードにつき1回だけ発火します。
 - 止めている間もロードは裏で進みます。止めたぶん、遷移全体は長くなります。
 
@@ -273,7 +274,7 @@ PF_SceneLoader
 |---|---|
 | Scene_Title | 「ゲームへ」で Game へ |
 | Scene_Game | 5秒後に自動でリザルトへ(仮スコア 1234 を書き込む)。ボタンでも遷移可 |
-| Scene_Result | スコア表示。「もう一度」で Game へ、「タイトルへ」で Title へ。右下の「67」ボタンで、画像が1秒だけ背景に出る |
+| Scene_Result | スコア表示。「もう一度」で Game へ、「タイトルへ」で Title へ。右下の「67」ボタンで、`PF_Man67` が1秒だけ背景に出る(手が上下する) |
 
 `Scene_Title` から Play すると一通り確認できます。
 
@@ -294,6 +295,7 @@ PF_SceneLoader
 | SceneTransitionButton.cs / SceneTransitionTrigger.cs | ボタン・イベントから遷移するための部品 |
 | GameScore.cs / ResultScoreView.cs | スコアの受け渡しと表示 |
 | Editor/SceneReferenceDrawer.cs | `SceneReference` の Inspector 表示 |
+| HandSwing.cs | 左右の手を交互に上下させる(`PF_Man67` で使用) |
 | TimedImageToggle.cs | `Show()` で指定のオブジェクトを一定時間だけ表示する(リザルトの「67」ボタンで使用) |
 | Demo/CountdownEvent.cs | 確認用(実際のゲームでは使わない) |
 
