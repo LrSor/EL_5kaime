@@ -123,6 +123,9 @@ public class PlayerController : MonoBehaviour
 
                 break;
 
+            case PlayerState.GAMEOVER:
+
+                break;
         }
     }
 
