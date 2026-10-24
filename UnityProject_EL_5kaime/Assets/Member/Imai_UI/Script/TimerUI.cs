@@ -26,7 +26,7 @@ public class TimerUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        numberText.text = TimerSystem.Instance.GetTime().ToString("D2");
+        numberText.text = TimerSystem.Instance.GetTime().ToString("D3");
     }
 }
 
