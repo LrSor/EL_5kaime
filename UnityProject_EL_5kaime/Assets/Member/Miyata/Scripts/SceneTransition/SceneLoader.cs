@@ -34,6 +34,7 @@ namespace SceneFlow
         [SerializeField, Tooltip("ロード画面が消え始める時に呼ぶ処理")] private UnityEvent _onFadeOutStarted;   // ロード画面が消え始める時
         [SerializeField, Tooltip("バーが指定%に達した時に呼ぶ処理と、その位置で止める時間。複数並べられる")] private List<ProgressTrigger> _progressTriggers = new List<ProgressTrigger>(); // バーが指定％に達した時
 
+        private readonly List<ProgressTrigger> _firedTriggers = new List<ProgressTrigger>(); // 毎フレームの確保を避けるため使い回す
         private bool _isLoading;
         private int _shownPercent = -1; // 表示中の％(-1は未表示)
 
@@ -103,6 +104,7 @@ namespace SceneFlow
                 ShowPercent(shown);
                 float hold = CheckProgressTriggers(shown);
                 if (hold > 0f) yield return new WaitForSecondsRealtime(hold); // バーはその位置のまま止まる
+                NotifyHoldFinished();
                 yield return null;
             }
 
@@ -136,8 +138,20 @@ namespace SceneFlow
         private float CheckProgressTriggers(float shown)
         {
             float hold = 0f;
-            foreach (var trigger in _progressTriggers) hold += trigger.Check(shown);
+            foreach (var trigger in _progressTriggers)
+            {
+                if (!trigger.Check(shown)) continue;
+                hold += trigger.HoldSeconds;
+                _firedTriggers.Add(trigger); // 止まりが終わった時に通知するため覚えておく
+            }
             return hold;
+        }
+
+        // 今回の止まりを発火したトリガーに、止まりの終了を通知する
+        private void NotifyHoldFinished()
+        {
+            foreach (var trigger in _firedTriggers) trigger.NotifyHoldFinished();
+            _firedTriggers.Clear();
         }
 
         private IEnumerator Fade(float from, float to)
