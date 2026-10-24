@@ -3,8 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "EffectData")]
 public class EffectData : ScriptableObject
 {
+
     [SerializeField]
-    private EffectType effectType;
+    private string effectId;
 
     [SerializeField]
     private GameObject prefab;
@@ -12,8 +13,7 @@ public class EffectData : ScriptableObject
     [SerializeField]
     private int initialPoolSize = 5;
 
-
-    public EffectType EffectType => effectType;
+    public string EffectId => effectId;
     public GameObject Prefab => prefab;
     public int InitialPoolSize => initialPoolSize;
 }

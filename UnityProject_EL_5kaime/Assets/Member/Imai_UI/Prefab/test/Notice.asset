@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2baac3a02def867499f39194af291961, type: 3}
-  m_Name: tstdata
+  m_Name: Notice
   m_EditorClassIdentifier: Assembly-CSharp::EffectData
-  effectType: 2
-  prefab: {fileID: 8721023957964969277, guid: 13f2ee6d49c8d8743a680e3e3317f9ee, type: 3}
+  effectId: Find
+  prefab: {fileID: 8228511948490034871, guid: 712247c42f4d76b478bdf3ab05f458d6, type: 3}
   initialPoolSize: 5
