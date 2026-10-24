@@ -859,6 +859,7 @@ GameObject:
   - component: {fileID: 913724000}
   - component: {fileID: 913723999}
   - component: {fileID: 913723998}
+  - component: {fileID: 913724100}
   m_Layer: 0
   m_Name: Button_67
   m_TagString: Untagged
@@ -899,7 +900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneFlow.TimedImageToggle
   _target: {fileID: 1749378296}
-  _seconds: 1
+  _seconds: 2
 --- !u!114 &913723999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,6 +948,18 @@ MonoBehaviour:
       - m_Target: {fileID: 913723998}
         m_TargetAssemblyTypeName: SceneFlow.TimedImageToggle, Assembly-CSharp
         m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 913724100}
+        m_TargetAssemblyTypeName: SceneFlow.SoundEventPlayer, Assembly-CSharp
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1589,3 +1602,17 @@ SceneRoots:
   - {fileID: 535325819}
   - {fileID: 452051551}
   - {fileID: 1556567811}
+--- !u!114 &913724100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913723996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f015a2fa2204e3392d92618cb2ab210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneFlow.SoundEventPlayer
+  _soundId: se.six_seven
+  _fallbackPrefab: {fileID: 7913754411795337062, guid: 85588ddd112823d4da89eb66e578b646, type: 3}

@@ -3,12 +3,15 @@ using UnityEngine;
 public abstract class EffectObject : MonoBehaviour
 {
     protected EffectPool pool;
-    protected EffectType effectType;
 
-    public void Initialize(EffectPool pool, EffectType effectType)
+    public EffectData EffectData { get; private set; }
+
+    public void Initialize(
+        EffectPool pool,
+        EffectData effectData)
     {
         this.pool = pool;
-        this.effectType = effectType;
+        EffectData = effectData;
     }
 
     public abstract void Play();
@@ -16,10 +19,5 @@ public abstract class EffectObject : MonoBehaviour
     protected void Release()
     {
         pool.Release(this);
-    }
-
-    public EffectType GetEffectType()
-    {
-        return effectType;
     }
 }
