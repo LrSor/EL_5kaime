@@ -218,7 +218,7 @@ SceneTransition.Go(result);   // リザルトへ
 PF_SceneLoader
 └─ LoadingCanvas   ← フェード対象(Canvas Group)
    ├─ Background   背景
-   ├─ Label        「Loading...」の文字
+   ├─ Label        「NOW LOADING」の文字
    ├─ PercentLabel 進行%の表示
    └─ ProgressBar  進捗バー
 ```
