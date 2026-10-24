@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
     public void Stan() 
     {
+        m_discoBeat.SetEffect(false);
         m_state = PlayerState.STAN;
         ChangeAnimation("GameOver");
         m_stanTime = 0;
