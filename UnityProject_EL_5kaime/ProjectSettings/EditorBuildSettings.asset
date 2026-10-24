@@ -12,11 +12,17 @@ EditorBuildSettings:
     path: Assets/Member/Miyata/Scenes/SceneTransition/Scene_Title.unity
     guid: 32cd0459d629d744e87c15bbd40f1244
   - enabled: 1
-    path: Assets/Member/Miyata/Scenes/SceneTransition/Scene_Result.unity
-    guid: 16836d0a4577a55439da48412a13f388
-  - enabled: 1
     path: Assets/Member/Miyata/Scenes/SceneTransition/Scene_Game.unity
     guid: e50cc2b1a211a044997dbe4c26c0c56c
+  - enabled: 1
+    path: Assets/Main/title.unity
+    guid: 7e84e93281002df4db938f151331f043
+  - enabled: 1
+    path: Assets/Main/GameScene.unity
+    guid: 52a740c2077fd304b9f98849535d9b3d
+  - enabled: 1
+    path: Assets/Member/Miyata/Scenes/SceneTransition/Scene_Result.unity
+    guid: 16836d0a4577a55439da48412a13f388
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
