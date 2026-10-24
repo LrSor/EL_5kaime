@@ -39,6 +39,8 @@ public class TimerSystem : MonoBehaviour
         currentTime -= Time.deltaTime;
         TimerUI.Instance.UpdateUI();
 
+
+
         if (currentTime <= 0)
         {
             TimeOverEvent();
@@ -60,5 +62,10 @@ public class TimerSystem : MonoBehaviour
     public void EventTest()
     {
         Debug.Log("時間切れイベント");
+    }
+
+    public void TimeMinus(float time)
+    {
+        currentTime -= time;
     }
 }
