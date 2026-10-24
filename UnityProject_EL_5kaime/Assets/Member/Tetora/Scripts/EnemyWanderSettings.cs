@@ -20,9 +20,9 @@ public sealed class EnemyWanderSettings
     [Min(0f), Tooltip("歩く方向へ視界を向ける旋回速度（度 / 秒）。0で即座に向く")]
     public float turnSpeed = 120f;
 
-    [Min(0f), Tooltip("壁との接触判定に使う敵の半径。0なら中心からのRaycastで判定")]
+    [Min(0f), Tooltip("旧プレファブ用の半径。足元にCircleCollider2Dがある敵は、その半径を使用")]
     public float collisionRadius = 0.5f;
 
-    [Tooltip("歩行を遮る Collider2D のレイヤー。Triggerと自分のColliderは除外")]
+    [Tooltip("徘徊・追跡とNavMesh生成で障害物とするCollider2Dのレイヤー。Triggerと自分は除外")]
     public LayerMask obstacleLayers = Physics2D.DefaultRaycastLayers;
 }

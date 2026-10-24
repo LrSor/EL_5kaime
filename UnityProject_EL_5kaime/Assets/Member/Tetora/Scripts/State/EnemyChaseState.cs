@@ -33,8 +33,7 @@ public class EnemyChaseState : EnemyState
 
         if (player != null && Vector3.Distance(Enemy.transform.position, player.transform.position) <= Enemy.chaseRange)
         {
-            Vector3 direction = (player.transform.position - Enemy.transform.position).normalized;
-            Enemy.transform.position += direction * Time.deltaTime * Enemy.chaseSpeed;
+            Enemy.Movement.MoveTowards(player.transform.position, Enemy.chaseSpeed, Time.deltaTime);
         }
     }
 }

@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
 
     public Vector2 WanderOrigin { get; private set; }
 
+    public EnemyMovement2D Movement { get; private set; }
+
     [Header("警戒ゲージ（秒）")]
     [Tooltip("通常時の近距離検知。視界での発見は常に即MAX")]
     public EnemyGaugeSettings normalGaugeSettings = new EnemyGaugeSettings();
@@ -84,6 +86,16 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
     {
+        Movement = GetComponent<EnemyMovement2D>();
+        if (Movement == null)
+        {
+            if (GetComponent<CircleCollider2D>() == null)
+            {
+                var feet = gameObject.AddComponent<CircleCollider2D>();
+                feet.radius = Mathf.Max(0.01f, wanderSettings.collisionRadius);
+            }
+            Movement = gameObject.AddComponent<EnemyMovement2D>();
+        }
         WanderOrigin = transform.position;
         detectionGauge = 0f;
         ChangeState(new EnemyNormalState(this));
@@ -316,6 +328,7 @@ public class Enemy : MonoBehaviour
 
     public void ChangeState(EnemyState newState)
     {
+        Movement?.ResetPath();
         currentState?.Exit();
         currentState = newState;
         currentState?.Enter();
