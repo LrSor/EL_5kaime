@@ -13,11 +13,11 @@ public class EnemyChaseState : EnemyState
         PlayerController player = Player;
         if (player != null)
         {
-            Enemy.FaceTowards(player.transform.position);
+            Enemy.FaceTowards(player.FeetPosition);
         }
 
         // 追跡中はプレイヤーの状態や追跡距離ではなく、視界に入っているかで増減する。
-        bool inSight = player != null && Enemy.IsInFieldOfView(player.transform.position);
+        bool inSight = player != null && Enemy.IsInFieldOfView(player.SightTargetPosition);
         Enemy.detectionGauge = Enemy.chaseGaugeSettings.UpdateGauge(
             Enemy.detectionGauge, inSight, Time.deltaTime, ref undetectedTime);
         if (inSight && player.GetPlayerState() == PlayerController.PlayerState.SIXSEVEN)
@@ -31,9 +31,9 @@ public class EnemyChaseState : EnemyState
             return;
         }
 
-        if (player != null && Vector3.Distance(Enemy.transform.position, player.transform.position) <= Enemy.chaseRange)
+        if (player != null && Vector3.Distance(Enemy.transform.position, player.FeetPosition) <= Enemy.chaseRange)
         {
-            Enemy.Movement.MoveTowards(player.transform.position, Enemy.chaseSpeed, Time.deltaTime);
+            Enemy.Movement.MoveTowards(player.FeetPosition, Enemy.chaseSpeed, Time.deltaTime);
         }
     }
 }

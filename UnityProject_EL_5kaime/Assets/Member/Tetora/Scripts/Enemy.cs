@@ -59,6 +59,11 @@ public class Enemy : MonoBehaviour
     private Color chaseFieldOfViewColor = new Color(1f, 0.85f, 0f, 0.25f);
 
     [Header("視界の共通設定")]
+    [Tooltip("足元の原点から見た視界の起点（ローカル座標）。Yを顔の高さに合わせて調整")]
+    public Vector2 visionOffset = new Vector2(0f, 1.5f);
+
+    public Vector3 VisionOrigin => transform.TransformPoint(visionOffset);
+
     [Tooltip("視界を遮る Collider2D のレイヤー。Trigger・自分・プレイヤーは除外")]
     public LayerMask visionObstacleLayers = Physics2D.DefaultRaycastLayers;
 
@@ -123,6 +128,7 @@ public class Enemy : MonoBehaviour
 
         float angle = CurrentVisionAngle;
         float length = CurrentVisionLength;
+        visionObject.transform.localPosition = visionOffset;
         visionRenderer.enabled = !(currentState is EnemyDeadState)
             && angle > 0f && length > 0f;
         visionRenderer.sortingOrder = fieldOfViewSortingOrder;
@@ -183,7 +189,7 @@ public class Enemy : MonoBehaviour
             return false;
         }
 
-        Vector2 offset = targetPosition - transform.position;
+        Vector2 offset = targetPosition - VisionOrigin;
         float distance = offset.magnitude;
         if (distance > length)
         {
@@ -204,7 +210,7 @@ public class Enemy : MonoBehaviour
     public bool IsPlayerInSight(PlayerController player)
     {
         return player != null && player.GetPlayerState() == PlayerController.PlayerState.SIXSEVEN
-            && IsInFieldOfView(player.transform.position);
+            && IsInFieldOfView(player.SightTargetPosition);
     }
 
     public void FaceTowards(Vector3 targetPosition)
@@ -234,7 +240,7 @@ public class Enemy : MonoBehaviour
         ContactFilter2D filter = new ContactFilter2D();
         filter.SetLayerMask(visionObstacleLayers);
         filter.useTriggers = false;
-        Physics2D.Raycast(transform.position, direction, filter, visionHits, length);
+        Physics2D.Raycast(VisionOrigin, direction, filter, visionHits, length);
 
         Transform playerTransform = TGameManager.Instance?.Player != null
             ? TGameManager.Instance.Player.transform : null;
@@ -266,6 +272,7 @@ public class Enemy : MonoBehaviour
         visionObject = new GameObject("Field of View");
         visionObject.layer = gameObject.layer;
         visionObject.transform.SetParent(transform, false);
+        visionObject.transform.localPosition = visionOffset;
         visionRenderer = visionObject.AddComponent<MeshRenderer>();
         visionRenderer.sharedMaterial = material;
         visionRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
@@ -303,13 +310,13 @@ public class Enemy : MonoBehaviour
 
         Vector3 start = GetVisionDirection(-fieldOfViewAngle * 0.5f);
         UnityEditor.Handles.color = fieldOfViewColor;
-        UnityEditor.Handles.DrawSolidArc(transform.position, Vector3.forward, start,
+        UnityEditor.Handles.DrawSolidArc(VisionOrigin, Vector3.forward, start,
             fieldOfViewAngle, fieldOfViewLength);
         UnityEditor.Handles.color = new Color(fieldOfViewColor.r, fieldOfViewColor.g, fieldOfViewColor.b, 1f);
-        UnityEditor.Handles.DrawWireArc(transform.position, Vector3.forward, start,
+        UnityEditor.Handles.DrawWireArc(VisionOrigin, Vector3.forward, start,
             fieldOfViewAngle, fieldOfViewLength);
-        UnityEditor.Handles.DrawLine(transform.position,
-            transform.position + (Vector3)GetVisionDirection(0f) * fieldOfViewLength);
+        UnityEditor.Handles.DrawLine(VisionOrigin,
+            VisionOrigin + (Vector3)GetVisionDirection(0f) * fieldOfViewLength);
     }
 #endif
 

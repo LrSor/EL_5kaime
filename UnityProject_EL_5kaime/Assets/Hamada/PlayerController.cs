@@ -11,6 +11,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_moveSoeed;
     [SerializeField] Animator m_animator;
 
+    private SpriteRenderer sightRenderer;
+
+    public Vector3 FeetPosition => transform.position;
+
+    // 追跡は足元、視界の検知は現在の画像の中央を使う。
+    public Vector3 SightTargetPosition
+    {
+        get
+        {
+            if (sightRenderer == null)
+            {
+                sightRenderer = m_animator != null
+                    ? m_animator.GetComponent<SpriteRenderer>() : GetComponentInChildren<SpriteRenderer>();
+            }
+            return sightRenderer != null ? sightRenderer.bounds.center : FeetPosition;
+        }
+    }
+
     PlayerState m_state;
 
     float m_horizontalInput;

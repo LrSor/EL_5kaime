@@ -23,17 +23,17 @@ public class EnemyNormalState : EnemyState
         {
             bool inSight = Enemy.IsPlayerInSight(Player);
             bool detected = inSight || (Player.GetPlayerState() == PlayerController.PlayerState.SIXSEVEN
-                && Vector3.Distance(Enemy.transform.position, Player.transform.position) <= Enemy.detectionRange);
+                && Vector3.Distance(Enemy.transform.position, Player.FeetPosition) <= Enemy.detectionRange);
             Enemy.detectionGauge = Enemy.normalGaugeSettings.UpdateGauge(
                 Enemy.detectionGauge, detected, Time.deltaTime, ref undetectedTime);
 
             if (Player.GetPlayerState() == PlayerController.PlayerState.SIXSEVEN
-                && Vector3.Distance(Enemy.transform.position, Player.transform.position) <= Enemy.detectionRange)
+                && Vector3.Distance(Enemy.transform.position, Player.FeetPosition) <= Enemy.detectionRange)
             {
                 scoreAdd += Time.deltaTime;
                 if (0.1f <= scoreAdd)
                 {
-                    ScoreSystem.Instance.ScoreAdd(Mathf.FloorToInt(scoreAdd * 10.0f));
+                    ScoreSystem.Instance?.ScoreAdd(Mathf.FloorToInt(scoreAdd * 10.0f));
                     scoreAdd -= 0.1f;
                 }
             }

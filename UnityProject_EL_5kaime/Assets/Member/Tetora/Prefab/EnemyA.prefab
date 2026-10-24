@@ -21,6 +21,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: visionOffset.y
+      value: 4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572833247470255676, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: wanderSettings.obstacleLayers.m_Bits
       value: 51
       objectReference: {fileID: 0}
@@ -87,6 +91,10 @@ PrefabInstance:
     - target: {fileID: 6858147899470195971, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6858147899470195971, guid: 03dddaecb0834a04692806ef8aa2ac86, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

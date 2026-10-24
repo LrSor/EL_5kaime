@@ -160,6 +160,7 @@ MonoBehaviour:
   chaseFieldOfViewAngle: 90
   chaseFieldOfViewLength: 5
   chaseFieldOfViewColor: {r: 1, g: 0.85, b: 0, a: 0.25}
+  visionOffset: {x: 0, y: 1.5}
   visionObstacleLayers:
     serializedVersion: 2
     m_Bits: 51
