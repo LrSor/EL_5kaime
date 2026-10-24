@@ -5,7 +5,8 @@ public class PlayerController : MonoBehaviour
     public enum PlayerState 
     {
     NORMAL,
-    SIXSEVEN
+    SIXSEVEN,
+    GAMEOVER
     }
 
     [SerializeField] float m_moveSoeed;
@@ -72,6 +73,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void GameOver() 
+    {
+        m_state = PlayerState.GAMEOVER;
+        ChangeAnimation("GameOver");
+    }
+
     private void DoSixSeven() 
     {
         if (Input.GetKeyDown(KeyCode.Space)) 
@@ -104,13 +111,13 @@ public class PlayerController : MonoBehaviour
 
             case PlayerState.SIXSEVEN:
 
-                m_scoreUpTime += Time.deltaTime;
+                //m_scoreUpTime += Time.deltaTime;
 
-                if (m_scoreUpTime > 1) 
-                {
-                    ScoreSystem.Instance.ScoreAdd(100);
-                    m_scoreUpTime = 0;
-                }
+                //if (m_scoreUpTime > 1) 
+                //{
+                //    ScoreSystem.Instance.ScoreAdd(100);
+                //    m_scoreUpTime = 0;
+                //}
 
                 ExitSixSeven();
 
