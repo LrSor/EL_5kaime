@@ -45,7 +45,7 @@ public class EnemyChaseState : EnemyState
                 Player.Stan();
                 Enemy.ChangeState(new EnemyNormalState(Enemy));
                 ScoreSystem.Instance.ScoreMinus(100);
-                TimerSystem.Instance.TimeMinus(-5f);
+                TimerSystem.Instance.TimeMinus(5f);
             }
         }
     }

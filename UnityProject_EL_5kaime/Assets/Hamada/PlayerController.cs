@@ -14,9 +14,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_moveSoeed;
     [SerializeField] Animator m_animator;
 
+    [SerializeField, Tooltip("画像の足元を示すTransform。Visualの位置をずらしても追跡先が一致する。未指定なら本体の原点")]
+    private Transform feetAnchor;
+
     private SpriteRenderer sightRenderer;
 
-    public Vector3 FeetPosition => transform.position;
+    public Vector3 FeetPosition => feetAnchor != null ? feetAnchor.position : transform.position;
 
     // 追跡は足元、視界の検知は現在の画像の中央を使う。
     public Vector3 SightTargetPosition
