@@ -11,6 +11,17 @@ public class Enemy : MonoBehaviour
     public float detectionRange = 5f;
     public float chaseRange = 10f;
 
+    public float killRange = 0.5f;
+
+
+    [Header("Score Settings")]
+    [Min(0.1f)]
+    public float scoreMaxTime = 2f;
+
+    [Min(1)]
+    public int scoreMaxPerTick = 20;
+
+
     [Header("通常時のランダムウォーク")]
     public EnemyWanderSettings wanderSettings = new EnemyWanderSettings();
 
