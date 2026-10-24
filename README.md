@@ -1,4 +1,4 @@
-# Misoten-27
+# EL_5回目のやつ
 
 
 
@@ -34,16 +34,9 @@ HAL東京 チーム制作プロジェクト。
 
 Misoten-27/
 |
-├─ UnityProject_Misoten-27/    # Unityプロジェクト
-├─ RaspberryPi/                # RaspberryPi関連
-├─ SharedData/                 # セーブデータやその他管理データ
+├─ UnityProject_EL_5kaime/    # Unityプロジェクト
 |
 ├─ README.md
 └─ README_Docs/                # READMEの素材
 
 ```
-
-
-
-## 注意事項
-・GitHbやUnityの設定を編集したい場合、澤田に要望を出してください。
