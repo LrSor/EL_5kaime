@@ -28,7 +28,7 @@ namespace Disco
 
         private void Start()
         {
-            if (playOnStart) Enable();
+            if (playOnStart) Enable(); else SetEffect(false);
         }
 
         /// <summary>演出を開始する。スコア等のイベントから呼ぶ。</summary>
