@@ -107,8 +107,21 @@ public sealed class EnemyMovement2D : MonoBehaviour
 
     private bool Blocks(Collider2D other)
     {
-        return other != null && !other.transform.IsChildOf(transform)
-            && !Physics2D.GetIgnoreLayerCollision(gameObject.layer, other.gameObject.layer)
+        if (other == null || other.transform.IsChildOf(transform))
+        {
+            return false;
+        }
+
+        // NavMeshと同様、追跡対象自身は障害物にしない。
+        // 足元の捕獲距離へ届く前に、相手のColliderで止まるのを防ぐ。
+        PlayerController target = TGameManager.Instance?.Player;
+        if (enemy.currentState is EnemyChaseState && target != null
+            && other.transform.IsChildOf(target.transform))
+        {
+            return false;
+        }
+
+        return !Physics2D.GetIgnoreLayerCollision(gameObject.layer, other.gameObject.layer)
             && !Physics2D.GetIgnoreCollision(feet, other);
     }
 

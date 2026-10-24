@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   m_moveSoeed: 5
   m_animator: {fileID: 2993187620556834749}
+  feetAnchor: {fileID: 1279068180306246429}
 --- !u!61 &5159347570136870803
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -114,7 +115,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}

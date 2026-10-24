@@ -742,7 +742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5319832999432597838, guid: f2a286a4bae8e9d4cb684782554433b4, type: 3}
       propertyPath: MaxTime
-      value: 5
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5319832999432597838, guid: f2a286a4bae8e9d4cb684782554433b4, type: 3}
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.size
